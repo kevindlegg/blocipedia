@@ -11,6 +11,7 @@ gem 'turbolinks', '~> 5'
 gem 'jbuilder', '~> 2.5'
 gem 'devise'
 gem 'bootstrap-sass'
+gem 'figaro', '1.0'
 
 gem 'bootsnap', '>= 1.1.0', require: false
 

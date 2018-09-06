@@ -59,7 +59,7 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  # Devise for User Authentication
+  # Devise for User Confirmation
   config.action_mailer.default_url_options = { host: 'localhost:3000' }
   config.action_mailer.delivery_method = :smtp
   # change to true to allow email to be sent during development
@@ -73,7 +73,7 @@ Rails.application.configure do
     domain: "mail.google.com",####important
     authentication: "plain",
     enable_starttls_auto: true,
-    user_name: "kevindlegg@gmail.com",
-    password: "bvahsxcwhqxokzco"
+    user_name: ENV['GMAIL_USERNAME'],
+    password: ENV['GMAIL_PASSWORD']
   }
 end
