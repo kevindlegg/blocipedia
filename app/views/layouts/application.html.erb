@@ -10,6 +10,21 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <% if user_signed_in? %>
+          <div class="pull-right user-info">
+            <li class="pull-right">Signed in as: <strong><%= current_user.email %></strong></li>
+            <li class="pull-right"><%= link_to 'Edit profile', edit_user_registration_path %></li>
+            <li class="pull-right"><%= link_to "Sign Out", destroy_user_session_path, method: :delete %></li>
+          </div>
+        <% else %>
+          <li class="pull-right"><%= link_to "Sign In", new_user_session_path  %></li>
+        <% end %>
+      </ul>
+
+      <%= yield %>
+    </div>
+
   </body>
 </html>

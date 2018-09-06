@@ -1,0 +1,27 @@
+// Place all the styles related to the welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.welcome-panel {
+  width: calc(50% - 2.4rem);
+  height: 17rem;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.plan-panel {
+  width: calc(50% - 2.4rem);
+  height: 17rem;
+  border: 0;
+  box-shadow: none;
+}
+
+.plan-buttons {
+  display:flex;
+  justify-content: center;
+}
+
+.plan-btn {
+  width: 120px;
+  margin-top: 30px;
+}

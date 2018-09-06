@@ -1,0 +1,25 @@
+<h2 class="text-center"><strong>Blocipedia: Social, Markdown Wikis</strong></h2>
+<body>
+  <div class="panel panel-default welcome-panel center-block">
+    <div class="panel-body">
+      <h3 class="text-center"><strong>Create and share Markdown Wikis</strong></h3>
+      <% if !user_signed_in? %>
+        <button class="btn btn-default center-block"><%= link_to "Sign Up", new_user_registration_path  %></button>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="container">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-2 text-center">
+      <h4>Create as many public wikis as you want!</h4><br/>
+      <button id="btnFree" class="btn btn-default plan-btn">Free Plan</button>
+    </div>
+    <div class="col-xs-4 text-center">
+      <h4>Create as many public wikis as you want!</h4><br/>
+      <button id="btnPremium" class="btn btn-default plan-btn">Premium Plan</button>
+    </div>
+  </div>
+  </div>
+
+</body>
