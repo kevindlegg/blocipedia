@@ -13,5 +13,4 @@ class User < ApplicationRecord
   def init 
     self.role ||= :standard
   end
-
 end
