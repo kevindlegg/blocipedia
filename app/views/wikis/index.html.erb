@@ -1,0 +1,11 @@
+<h1>My wikis</h1>
+<table class="table table-sm table-bordered wiki-table">
+  <tbody>
+    <%= render @wikis %>
+  </tbody>
+</table>
+<div>
+  <% if current_user %>
+    <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %>
+  <% end %>
+</div>

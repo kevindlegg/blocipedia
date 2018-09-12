@@ -1,0 +1,7 @@
+<tr>
+  <td id="wiki-title"><%= link_to wiki.title, wiki_path(wiki.id, wiki)%></td>
+  <% if current_user && wiki.user == current_user %>
+    <td> <%= link_to "Edit", edit_wiki_path(wiki.id, wiki)%> </td>
+    <td> <%= link_to "Delete", [wiki], method: :delete,data: {confirm: 'Are you sure you want to delete this post?'}%> </td>
+  <% end %>
+</tr>
