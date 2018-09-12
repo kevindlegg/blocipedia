@@ -17,7 +17,7 @@ end
 users = User.all
 
 # Creat Wikis
-100.times do
+20.times do
   Wiki.create!(
     title:    Faker::Lorem.characters(5..50),
     body:     Faker::Markdown.sandwich(5),
