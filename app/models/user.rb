@@ -5,7 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable
   has_many :wikis, dependent: :destroy
-  before_save { self.role ||= :standard }
+  after_initialize :init
 
   enum role: [:standard, :premium, :admin]
+
+  private
+  def init 
+    self.role ||= :standard
+  end
+
 end
