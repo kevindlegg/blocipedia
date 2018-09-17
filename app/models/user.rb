@@ -8,4 +8,9 @@ class User < ApplicationRecord
   before_save { self.role ||= :standard }
 
   enum role: [:standard, :premium, :admin]
+
+  private
+  def init
+    self.role ||= :standard
+  end
 end

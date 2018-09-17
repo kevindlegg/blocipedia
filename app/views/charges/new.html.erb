@@ -1,2 +1,15 @@
-<h1>Charges#new</h1>
-<p>Find me in app/views/charges/new.html.erb</p>
+ <%= form_tag charges_path do %>
+   <h4>Click the button!</h4>
+   <button>
+    <script class="stripe-button" 
+        src="https://checkout.stripe.com/checkout.js" 
+        data-key="<%= @stripe_btn_data[:key] %>" 
+        data-amount="<%= @stripe_btn_data[:amount] %>" 
+        data-description="<%= @stripe_btn_data[:description] %>">
+      </script>
+    </button>
+    <div class:"row">
+      Amount to pay:
+      <%= number_to_currency(Amount.default.amount/100)+" USD" %>
+    </div>
+ <% end %>

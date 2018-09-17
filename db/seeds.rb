@@ -27,6 +27,12 @@ users = User.all
 end
 wikis = Wiki.all
 
+Amount.create!(
+    amount:   1000,
+    default:  true      
+)
+
 puts "Seed finished"
 puts "#{User.count} users created."
 puts "#{Wiki.count} wikis created."
+puts "#{Amount.count} amount default created."
