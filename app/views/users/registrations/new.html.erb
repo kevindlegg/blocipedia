@@ -5,13 +5,6 @@
   <%= devise_error_messages! %>
 
   <div class="field">
-    <%= f.radio_button :role, 'standard', :checked => true%>
-    <%= f.label :role, "Standard Plan (free)" %>
-    <%= f.radio_button :role, 'premium' %>
-    <%= f.label :role, "Premium Plan" %>
-  </div>
-
-  <div class="field">
     <%= f.label :email %><br />
     <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
   </div>

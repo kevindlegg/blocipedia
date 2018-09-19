@@ -17,16 +17,23 @@ end
 users = User.all
 
 # Creat Wikis
-100.times do
+20.times do
   Wiki.create!(
     title:    Faker::Lorem.characters(5..50),
     body:     Faker::Markdown.sandwich(5),
+    private:  Faker::Boolean.boolean,
     user:     users.sample
 
   )
 end
 wikis = Wiki.all
 
+Amount.create!(
+    amount:   1500,
+    default:  true      
+)
+
 puts "Seed finished"
 puts "#{User.count} users created."
 puts "#{Wiki.count} wikis created."
+puts "#{Amount.count} amount default created."

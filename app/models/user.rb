@@ -10,7 +10,7 @@ class User < ApplicationRecord
   enum role: [:standard, :premium, :admin]
 
   private
-  def init 
+  def init
     self.role ||= :standard
   end
 end
