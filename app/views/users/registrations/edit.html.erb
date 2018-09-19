@@ -3,7 +3,7 @@
   <div class="field">
     <strong><%= resource.role.capitalize %></strong><br />
     <% if resource.stripe_customer_token %>
-      <%= button_to "Downgrade my account", user_registration_path(:stripe_customer_token => nil, :role => "standard"), method: :patch %>
+      <%= button_to "Downgrade my account", charge_path(:stripe_customer_token), method: :delete %>
     <% else %>    
       <%= button_to "Upgrade my account", new_charge_path, method: :get %>
     <% end %>

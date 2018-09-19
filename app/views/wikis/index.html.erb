@@ -1,6 +1,6 @@
 <h1>My wikis</h1>
 <div class="wiki-buttons">
-  <% if current_user %>
+  <% if policy(@wikis).new? %>
     <%= link_to "New Wiki", new_wiki_path, class: 'btn btn-success' %>
   <% end %>
 </div>

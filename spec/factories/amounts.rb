@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :amount do
-    amount "9.99"
+    amount Amount.default
     default true
   end
 end

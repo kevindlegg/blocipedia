@@ -21,6 +21,7 @@ users = User.all
   Wiki.create!(
     title:    Faker::Lorem.characters(5..50),
     body:     Faker::Markdown.sandwich(5),
+    private:  Faker::Boolean.boolean,
     user:     users.sample
 
   )
@@ -28,7 +29,7 @@ end
 wikis = Wiki.all
 
 Amount.create!(
-    amount:   1000,
+    amount:   1500,
     default:  true      
 )
 

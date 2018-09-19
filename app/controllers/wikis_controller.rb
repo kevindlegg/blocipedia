@@ -1,24 +1,22 @@
 class WikisController < ApplicationController
-  before_action :require_sign_in, except: [:index, :show]
-
   def index
-    @wikis = Wiki.all
+    @wikis = policy_scope(Wiki)
   end
 
   def show
-    @wiki = Wiki.find(params[:id])
+    @wiki = authorize Wiki.find(params[:id])
   end
 
   def new
-    @wiki = Wiki.new
+    @wiki = authorize Wiki.new
   end
 
   def edit
-    @wiki = Wiki.find(params[:id])
+    @wiki = authorize Wiki.find(params[:id])
   end
 
-  def create 
-    @wiki = Wiki.new(wiki_params)
+  def create
+    @wiki = authorize Wiki.new(wiki_params)
     @wiki.user = current_user
 
     if @wiki.save
@@ -30,7 +28,7 @@ class WikisController < ApplicationController
   end
 
   def update
-    @wiki = Wiki.find(params[:id])
+    @wiki = authorize Wiki.find(params[:id])
     @wiki.assign_attributes(wiki_params)
 
     if @wiki.save
@@ -43,7 +41,7 @@ class WikisController < ApplicationController
   end
 
   def destroy
-    @wiki = Wiki.find(params[:id])
+    @wiki = authorize Wiki.find(params[:id])
 
     if @wiki.destroy
       flash[:notice] = "\"#{@wiki.title}\" was deleted successfully."
@@ -55,8 +53,8 @@ class WikisController < ApplicationController
   end
 
   private
+
   def wiki_params
     params.require(:wiki).permit(:title, :body)
   end
-
 end
