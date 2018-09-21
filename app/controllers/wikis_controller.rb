@@ -16,8 +16,9 @@ class WikisController < ApplicationController
   end
 
   def create
-    @wiki = authorize Wiki.new(wiki_params)
+    @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
+    authorize @wiki
 
     if @wiki.save
       redirect_to wikis_path, notice: "Wiki was saved successfully."
@@ -55,6 +56,6 @@ class WikisController < ApplicationController
   private
 
   def wiki_params
-    params.require(:wiki).permit(:title, :body)
+    params.require(:wiki).permit(:title, :body, :private)
   end
 end

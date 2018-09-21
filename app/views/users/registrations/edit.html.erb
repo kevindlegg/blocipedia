@@ -3,7 +3,7 @@
   <div class="field">
     <strong><%= resource.role.capitalize %></strong><br />
     <% if resource.stripe_customer_token %>
-      <%= button_to "Downgrade my account", charge_path(:stripe_customer_token), method: :delete %>
+      <%= button_to "Downgrade my account", charge_path(:stripe_customer_token), data: { confirm: "Are you sure? Your private wikis will become public." }, method: :delete %>
     <% else %>    
       <%= button_to "Upgrade my account", new_charge_path, method: :get %>
     <% end %>

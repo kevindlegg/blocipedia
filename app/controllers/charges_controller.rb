@@ -19,7 +19,7 @@ class ChargesController < ApplicationController
     # Where the real magic happens
     charge = Stripe::Charge.create(
       customer: customer.id, # Note -- this is NOT the user_id in your app
-      amount: Amount.default.amount,
+      amount: Amount.default,
       description: "BigMoney Membership - " + current_user.email.to_s,
       currency: 'usd'
     )
@@ -53,6 +53,9 @@ class ChargesController < ApplicationController
       role: "standard",
       stripe_customer_token: nil
     )
+
+    @user.wikis.update_all(private: false)
+
     redirect_to edit_user_registration_path # or wherever
 
     # Stripe will send back CardErrors, with friendly messages

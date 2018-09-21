@@ -1,12 +1,17 @@
 <div>
   <h1>
-    <%= @wiki.title %> <br>
+    <%= @wiki.title %>    
+    <div id="wiki-private">
+      <% if @wiki.private %>
+        PRIVATE
+      <% end %>
+    </div> <br>
     <small>
       submitted <%= time_ago_in_words(@wiki.created_at) %> ago by <%= @wiki.user.email %>
     </small>
   </h1>
 </div>
- 
+
 <div class="row">
   <div class="col-md-8">
     <p><%= @wiki.body %></p>

@@ -10,11 +10,11 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def new 
-    create?
+    user.present?
   end
 
   def create?
-    user.present?
+    user.present? && (!record.private || (record.private && user.admin? || user.premium?))
   end
 
   def edit?
@@ -30,7 +30,7 @@ class WikiPolicy < ApplicationPolicy
   end
 
   def show?
-    return true if user.present? && (user.admin? || user.premium? || record.user == user || !record.private)
+    return true if user.present? && (user.admin? || user.premium? || record.user == user || record.private == false)
   end
 
 end
