@@ -13,7 +13,10 @@
 </div>
 
 <div class="row">
-  <div class="col-md-8">
-    <p><%= @wiki.body %></p>
+  <div class="col">
+    <strong>Preview</strong>
+  </div>
+  <div class="col panel panel-default markup">
+    <div class="panel-body"><%= markdown(@wiki.body) %></div>
   </div>
 </div>
