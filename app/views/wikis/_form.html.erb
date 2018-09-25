@@ -38,7 +38,9 @@
   <div class="col-md-6">
       <strong>Preview</strong>
     <div class="markdown panel panel-default">
-      <div class="panel-body"><%= markdown(wiki.body) %></div>
+      <% if wiki.body %>
+        <div class="panel-body"><%= markdown(wiki.body) %></div>
+      <% end %>
     </div>
   </div>
 </div>
