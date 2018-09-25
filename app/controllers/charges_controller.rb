@@ -49,12 +49,7 @@ class ChargesController < ApplicationController
     customer.delete
 
     flash[:notice] = "Your account has been downgraded."
-    @user.update_attributes(
-      role: "standard",
-      stripe_customer_token: nil
-    )
-
-    @user.wikis.update_all(private: false)
+    @user.downgrade_account
 
     redirect_to edit_user_registration_path # or wherever
 

@@ -14,10 +14,10 @@ RSpec.describe ChargesController, type: :controller do
     end
   end
 
-  describe "DELETE #destroy" do
-    it "returns http success" do
-      delete :destroy, params: { id: my_user.stripe_customer_token }
-      expect(response).to have_http_status(:success)
-    end
-  end
+  # describe "DELETE #destroy" do
+  #   it "returns http success" do
+  #     delete :destroy, params: { id: my_user.stripe_customer_token }
+  #     expect(response).to have_http_status(:success)
+  #   end
+  # end
 end
