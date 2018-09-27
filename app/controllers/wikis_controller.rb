@@ -13,6 +13,7 @@ class WikisController < ApplicationController
 
   def edit
     @wiki = authorize Wiki.find(params[:id])
+    @users = policy_scope(User)
   end
 
   def create
