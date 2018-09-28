@@ -5,6 +5,6 @@
      <%= render partial: 'form', locals: { id: @wiki.id, wiki: @wiki } %>
    </div>
    <div>
-    <%= render partial: 'collaborators/collaborator', locals: { users: @users } %>
+    <%= render partial: 'collaborators/collaborator', locals: { collaborators: @collaborators, users: @users } %>
    </div>
  </div>

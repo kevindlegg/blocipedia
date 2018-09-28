@@ -1,9 +1,14 @@
-  <div class="form-group">
-    <p>Collaborators</p>
-    <% @users.each do |user| %>
-      <div class="user">
-        <%= check_box_tag "wiki_ids[]user_ids[]", user.id, @wiki.collaborators.where(user_id: user.id).exists? %>
-        <%= user.email %> 
-      </div>
-    <% end %>
+
+<div class="form-group">
+  <p>Collaborators</p>
+  <% users.each do |user| %>
+    <div class="user">
+      <input type="checkbox" name="collaborator" value=<%=user.id%>, 
+      <%= @wiki.collaborators.where(user_id: user.id).exists? ? 'CHECKED' : '' %> >
+      <%= user.email %> 
+    </div>
+  <% end %>
+  <div>
+      <%= link_to "Save", "wiki[user_ids]]", class: 'btn btn-success', method: :post %>
   </div>
+</div>

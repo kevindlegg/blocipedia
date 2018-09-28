@@ -1,12 +1,11 @@
 class CollaboratorsController < ApplicationController
 
   def create
-    wiki = Wiki.find(params[:wiki_id])
-    user = User.find(params[:user_id])
-    collaborator = user.collaborators.build(wiki_id: wiki.id)
-    puts collaborator.inspect
+    @wiki = Wiki.find(params[:wiki_id])
+    @user = User.find(params[:user_id])
+    @collaborators = user.collaborators.build(wiki_id: wiki.id)
 
-    if collaborator.save
+    if collaborators.save
       flash[:notice] = "Collaboration created between #{wiki.id} and #{user.id}."
     else
       flash[:alert] = "Collaboration failed."
@@ -32,6 +31,6 @@ class CollaboratorsController < ApplicationController
   private
 
   def collaborator_params
-    params.require(:collaborator).permit(:user, :wiki)
+    params.require(:collaborator).permit(:wiki, user_ids: [])
   end
 end
