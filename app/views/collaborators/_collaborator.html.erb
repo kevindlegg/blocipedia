@@ -1,14 +1,9 @@
+<strong>Collaborators</strong>
+<% @collabs.each do |collab| %>
+  <p><%= collab.user.email %><%= link_to '  Remove', wiki_collaborator_path(@wiki, collab), method: :delete %></p>
+<% end %>
 
-<div class="form-group">
-  <p>Collaborators</p>
-  <% users.each do |user| %>
-    <div class="user">
-      <input type="checkbox" name="collaborator" value=<%=user.id%>, 
-      <%= @wiki.collaborators.where(user_id: user.id).exists? ? 'CHECKED' : '' %> >
-      <%= user.email %> 
-    </div>
-  <% end %>
-  <div>
-      <%= link_to "Save", "wiki[user_ids]]", class: 'btn btn-success', method: :post %>
-  </div>
-</div>
+<%= form_tag wiki_collaborators_path(@wiki) do %>
+  <%= select(:collaborator, :email, @collab_users ) %>
+  <%= submit_tag "Save Collaborator" %>
+<% end %>

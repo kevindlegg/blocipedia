@@ -1,36 +1,34 @@
 class CollaboratorsController < ApplicationController
-
   def create
     @wiki = Wiki.find(params[:wiki_id])
-    @user = User.find(params[:user_id])
-    @collaborators = user.collaborators.build(wiki_id: wiki.id)
+    @user = User.find(params[:collaborator][:email])
+    @collaborator = @wiki.collaborators.build(user: @user)
 
-    if collaborators.save
-      flash[:notice] = "Collaboration created between #{wiki.id} and #{user.id}."
+    if @collaborator.save
+      flash[:notice] = "Collaboration created between #{@wiki.id} and #{@user.id}."
+      redirect_to edit_wiki_path(@wiki)
     else
       flash[:alert] = "Collaboration failed."
+      redirect_to @wiki
     end
-
-    redirect_to [wiki]
   end
 
   def destroy
-    # wiki = Wiki.find(params[:wiki_id])
-    # user = User.find(params[:user_id])
-    collaborator = Collaborator.find(params[:id])
+    @wiki = Wiki.find(params[:wiki_id])
+    @collaborator = Collaborator.find(params[:id])
 
-    if collaborator.destroy
-      flash[:notice] = "Collaboration deleted between  #{collaborator.wiki_id} and #{collaborator.user_id}."
+    if @collaborator.destroy
+      flash[:notice] = "Collaboration deleted #{@collaborator.user.email}."
+      redirect_to edit_wiki_path(@wiki)
     else
       flash[:alert] = "Collaboration failed."
+      render edit_wiki_path
     end
-
-    redirect_to [collaborator.wiki]
   end
 
   private
 
   def collaborator_params
-    params.require(:collaborator).permit(:wiki, user_ids: [])
+    params.require(:collaborator).permit(:wiki, :user, :collaborator)
   end
 end

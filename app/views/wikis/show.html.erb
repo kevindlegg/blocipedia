@@ -20,3 +20,12 @@
     <div class="panel-body"><%= markdown(@wiki.body) %></div>
   </div>
 </div>
+
+<div class="row">
+  <div class="col-md-8">
+    <strong>Collaborators:
+    </strong>
+    <% @collabs.each do |collab| %>
+    <p><%= collab.email %></p>
+    <% end %>
+  </div>

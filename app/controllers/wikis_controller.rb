@@ -5,21 +5,25 @@ class WikisController < ApplicationController
 
   def show
     @wiki = authorize Wiki.find(params[:id])
+    @collabs = @wiki.users
   end
 
   def new
     @wiki = authorize Wiki.new
+    @collabs = Collaborator.where(wiki_id: @wiki.id)
   end
 
   def edit
     @wiki = authorize Wiki.find(params[:id])
-    @users = policy_scope(User)
+    @collabs = @wiki.collaborators
+    @collab_users = User.all.reject{ |u| u == current_user}.collect{|u| [ u.email, u.id ] }
   end
 
   def create
     @wiki = Wiki.new(wiki_params)
     @wiki.user = current_user
     authorize @wiki
+    @collabs = Collaborator.where(wiki_id: @wiki.id)
 
     if @wiki.save
       redirect_to wikis_path, notice: "Wiki was saved successfully."
