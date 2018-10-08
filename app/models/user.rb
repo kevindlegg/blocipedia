@@ -7,7 +7,7 @@ class User < ApplicationRecord
          :confirmable
   has_many :wikis, dependent: :destroy
   has_many :collaborators, dependent: :destroy
-  has_many :wikis, through: :collaborators, source: :wiki
+  has_many :wiki_collabs, through: :collaborators, source: :wiki
 
   after_initialize :init
   after_update :reset_wikis, if: :downgraded_account?
